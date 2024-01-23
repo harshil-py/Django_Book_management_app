@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<a href="{% url 'add_book_list' %}"><button>Add</button></a>
+
+{% if blist %}
+<table>
+{% for b in blist %}
+
+<tr>
+    <td>{{ b.title }}
+        <a href="{% url 'edit_book_list' b.id %}">Edit</a>
+        <a href="{% url 'delete_book_list' b.id %}">Delete</a>
+            
+    </td>
+    <td>{{ b.author }}
+        <a href="{% url 'edit_book_list' b.id %}">Edit</a>
+        <a href="{% url 'delete_book_list' b.id %}">Delete</a>
+            
+    </td>
+    <td>{{ b.publication_year }}
+        <a href="{% url 'edit_book_list' b.id %}">Edit</a>
+        <a href="{% url 'delete_book_list' b.id %}">Delete</a>
+            
+    </td>
+    <td>{{ b.isbn }}
+        <a href="{% url 'edit_book_list' b.id %}">Edit</a>
+        <a href="{% url 'delete_book_list' b.id %}">Delete</a>
+            
+    </td>
+</tr>    
+    
+
+{% endfor %}
+</table>
+{% else %}
+<h1> No records found! </h1>
+{% endif %}
+{% endblock %}
+

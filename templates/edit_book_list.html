@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<form method="POST" action="{% url 'update_book_list' b.id %}">
+    <select name="author">
+        {% for a in alist %}
+        <option value="{{ a.id }}"{% if b.author.id == a.id %} selected {% endif %}>{{ a.name }}</option>
+        {% endfor %}
+    </select><br>
+    <input type="text" name="title" value="{{ b.title }}"><br>
+    <input type="text" name="publication_year" value="{{ b.publication_year }}"><br>
+    <input type="text" name="isbn" value="{{ b.isbn }}"><br>
+    {% csrf_token %}
+    <input type="submit">
+</form>
+
+{% endblock %}

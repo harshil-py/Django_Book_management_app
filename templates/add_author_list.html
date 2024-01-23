@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<form method="POST">
+    {{ aform.as_p }}
+    {% csrf_token %}
+    <input type="submit">
+</form>
+
+{% endblock%}

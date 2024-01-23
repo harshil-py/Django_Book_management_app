@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+
+<a href="{% url 'add_author_list' %}"><button>Add</button></a>
+
+{% if alist %}
+<table>
+{% for i in alist %}
+<tr>
+    <td>{{ i.name }}
+        <a href="{% url 'edit_author_list' i.id %}">Edit</a>
+        <a href="{% url 'delete_author_list' i.id %}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<h1> No records found! </h1>
+{% endif %}
+{% endblock %}
+
